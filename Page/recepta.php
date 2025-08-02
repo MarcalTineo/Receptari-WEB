@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
    ?>
    <link rel="stylesheet" href="../CSS/recepta.css">
 </head>
+
 <body>
    <?php require "Utils/requireCRUDs.php"; ?>
    <div id="page_wrapper">
@@ -26,13 +28,40 @@
                <div id="recipe_title">
                   <h2 id="recipte_title"><?php echo $recipe->getName() ?></h2>
                   <div id="recipe_categories">
-                     CATEGORIES
+                     <?php
+                     $categories_ids = $recipe->getCategories();
+                     for ($i = 0; $i < count($categories_ids); $i++) {
+                        ?>
+                        <div class="recipe_category_tag">
+                           <p>
+                              <?php
+                              $tag_obj = new Category($categories_ids[$i]);
+                              echo $tag_obj->getName();
+                              ?>
+                           </p>
+                        </div>
+                        <?php
+                     }
+                     ?>
                   </div>
-
                </div>
                <div id="recipe_info">
                   <div id="recipe_tags">
-                     TAGS
+                     <?php
+                     $tags_ids = $recipe->getTags();
+                     for ($i = 0; $i < count($tags_ids); $i++) {
+                        ?>
+                        <div class="recipe_tag_tag">
+                           <p>
+                              <?php
+                              $tag_obj = new Tag($tags_ids[$i]);
+                              echo $tag_obj->getName();
+                              ?>
+                           </p>
+                        </div>
+                        <?php
+                     }
+                     ?>
                   </div>
                   <p id="recipe_description"><?php echo $recipe->getDescription() ?></p>
                </div>
@@ -40,7 +69,45 @@
                   <img src="https://picsum.photos/700/700" alt="">
                </div>
                <div id="recipe_ingredients">
-                  asd
+                  <table>
+                     <thead>
+                        <tr class="recipe_ingredient_header">
+                           <th>INGREDIENT</th>
+                           <th colspan=2>QUANTITAT</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+
+                        <?php
+                        $ingredients_rcp_ids = $recipe->getIngredients();
+                        foreach ($ingredients_rcp_ids as $key => $value) {
+                           $ingredient_rcp_obj = new Recipe_Ingredient($value['ingredient_id']);
+                           ?>
+                           <tr class="recipe_ingredient_row">
+                              <td>
+                                 <?php
+                                 $ingredient = new Ingredient($ingredient_rcp_obj->getIngredientId());
+                                 echo $ingredient->getName();
+                                 ?>
+                              </td>
+                              <td>
+                                 <?php
+                                 echo $ingredient_rcp_obj->getQuantity();
+                                 ?>
+                              </td>
+                              <td>
+                                 <?php
+                                 $unit = new Unit($ingredient_rcp_obj->getUnitId());
+                                 echo $unit->getMetric();
+                                 ?>
+                              </td>
+                           </tr>
+                           <?php
+                        }
+                        ?>
+
+                     </tbody>
+                  </table>
                </div>
                <div id="recipe_steps">
                   dsaSTEPS
@@ -57,4 +124,5 @@
       ?>
    </div>
 </body>
+
 </html>
