@@ -1,0 +1,123 @@
+/** @format */
+
+header {
+	background-color: var(--primary-color);
+	display: grid;
+	grid-template-columns: 1fr 900px 1fr;
+	grid-template-rows: 1fr 1fr;
+	grid-template-areas:
+		"a b c"
+		"a d c";
+	min-width: 1250px;
+}
+
+p {
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+a {
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+#header_title {
+	grid-area: a;
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: left;
+}
+
+#header_title > h1 {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	color: var(--title-color);
+	font-size: 40px;
+}
+#header_title > img {
+	width: 135px;
+}
+
+#header_nav {
+	grid-area: d;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	/*  */
+}
+#header_nav > ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+.nav_button {
+	color: var(--title-color);
+	font-size: 2em;
+
+	width: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0px 0px;
+	transition: 100ms;
+}
+
+.nav_button:hover {
+	border-bottom: 5px solid var(--title-color);
+	border-top: 5px solid var(--title-color);
+}
+
+.nav_button > a {
+	text-align: center;
+	margin: 0px;
+	width: 100%;
+	text-decoration: none;
+	color: var(--title-color);
+}
+
+#header_searchbar {
+	grid-area: b;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#header_user_tools {
+	grid-area: c;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: right;
+}
+#header_user_tools > * {
+	display: flex;
+	flex-flow: row-reverse nowrap;
+	margin: 20px;
+	height: 70px;
+}
+
+.header_user_tools_button {
+	width: 150px;
+	height: 35px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0px 5px;
+	transition: 100ms;
+	border: 5px solid var(--primary-color);
+	border-radius: 5px;
+}
+
+.header_user_tools_button:hover {
+	border-radius: 20px;
+	border: 5px solid var(--title-color);
+}
+.header_user_tools_button > a {
+	text-decoration: none;
+	text-align: center;
+	color: var(--title-color);
+	margin: 0px;
+	font-size: 20px;
+}

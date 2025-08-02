@@ -1,0 +1,33 @@
+/** @format */
+
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+#page_wrapper {
+	width: 100%;
+	margin: 0px auto;
+	padding: 0px;
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows: 150px auto 350px;
+}
+
+main {
+	background-color: var(--bg-color);
+}
+#content {
+	width: 1400px;
+	margin: 15px auto;
+	padding: 20px;
+	box-shadow: 0px 0px 8px 8px var(--shadow-color);
+}
+
+header {
+	box-shadow: 0px 0px 30px 5px var(--shadow-color);
+	z-index: 2;
+}
+footer {
+	box-shadow: 0px 0px 30px 5px var(--shadow-color);
+}
