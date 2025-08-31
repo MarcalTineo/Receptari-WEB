@@ -16,13 +16,35 @@ class User
    private $created_at = "";
    private $modified_at = "";
 
+   public function __construct($id)
+   {
+      //if the constructor is called with id 0, will return an empty user.
+      if ($id != 0) {
+         $read = User::read($id);
+         foreach ($read as $key => $value) {
+            $this->id = $value['id'];
+            $this->name = $value['name'];
+            $this->surname1 = $value['surname1'];
+            $this->surname2 = $value['surname2'];
+            $this->role_id = $value['role_id'];
+            $this->email = $value['email'];
+            $this->phone = $value['phone'];
+            $this->username = $value['username'];
+            $this->password = $value['password'];
+            $this->address = $value['address'];
+            $this->recipes_created = $value['recipes_created'];
+            $this->last_access = $value['last_acces'];
+            $this->created_at = $value['created_at'];
+            $this->modified_at = $value['modified_at'];
+         }
+      }
+   }
 
-
-   public function getId()
+   public function getId(): int
    {
       return $this->id;
    }
-   public function getName()
+   public function getName(): string
    {
       return $this->name;
    }
@@ -30,7 +52,7 @@ class User
    {
       $this->name = $name;
    }
-   public function getSurname1()
+   public function getSurname1(): string
    {
       return $this->surname1;
    }
@@ -38,7 +60,7 @@ class User
    {
       $this->surname1 = $surname1;
    }
-   public function getSurname2()
+   public function getSurname2(): string
    {
       return $this->surname2;
    }
@@ -46,7 +68,7 @@ class User
    {
       $this->surname2 = $surname2;
    }
-   public function getRoleId()
+   public function getRoleId(): int
    {
       return $this->role_id;
    }
@@ -54,7 +76,7 @@ class User
    {
       $this->role_id = $role_id;
    }
-   public function getEmail()
+   public function getEmail(): string
    {
       return $this->email;
    }
@@ -62,7 +84,7 @@ class User
    {
       $this->email = $email;
    }
-   public function getPhone()
+   public function getPhone(): string
    {
       return $this->phone;
    }
@@ -70,7 +92,7 @@ class User
    {
       $this->phone = $phone;
    }
-   public function getUsername()
+   public function getUsername(): string
    {
       return $this->username;
    }
@@ -78,7 +100,7 @@ class User
    {
       $this->username = $username;
    }
-   public function getPassword()
+   public function getPassword(): string
    {
       return $this->password;
    }
@@ -86,7 +108,7 @@ class User
    {
       $this->password = $password;
    }
-   public function getAddress()
+   public function getAddress(): string
    {
       return $this->address;
    }
@@ -94,19 +116,19 @@ class User
    {
       $this->address = $address;
    }
-   public function getRecipesCreated()
+   public function getRecipesCreated(): int
    {
       return $this->recipes_created;
    }
-   public function setRecipesCreated($recipes_created)
+   public function setRecipesCreated(int $recipes_created)
    {
       $this->recipes_created = $recipes_created;
    }
-   public function getLastAccess()
+   public function getLastAccess(): string
    {
       return $this->last_access;
    }
-   public function setLastAccess($last_access)
+   public function setLastAccess(string $last_access)
    {
       $this->last_access = $last_access;
    }
@@ -186,6 +208,14 @@ class User
    {
       $conn = (new Connection("localhost", "root", "", "receptari"))->connect();
       $result = $conn->query("SELECT * FROM users WHERE id = $id");
+      $conn->close();
+      return $result;
+   }
+
+   public static function readByUsername($username)
+   {
+      $conn = (new Connection("localhost", "root", "", "receptari"))->connect();
+      $result = $conn->query("SELECT * FROM users WHERE username = '$username'");
       $conn->close();
       return $result;
    }

@@ -12,7 +12,10 @@
 </head>
 
 <body>
-   <?php require "Utils/requireCRUDs.php"; ?>
+   <?php
+   require "Utils/requireCRUDs.php";
+   require "Utils/CheckSession.php";
+   ?>
    <div id="page_wrapper">
       <?php
       require "Page_component/header.php";
@@ -110,8 +113,25 @@
                   </table>
                </div>
                <div id="recipe_steps">
-                  dsaSTEPS
+                  <?php
+                  $steps_recipe_ids = $recipe->getSteps();
+                  foreach ($steps_recipe_ids as $key => $value) {
+                     $step = new Step($value['id']);
+                     var_dump($step);
+                     ?>
+                     <div class="recipe_step">
+                        <div class="recipe_step_number">
+                           <p></p>
+                        </div>
+                        <div class="recipe_step_text">
+                           <p></p>
+                        </div>
+                     </div>
+                     <?php
+                  }
+                  ?>
                </div>
+
                <?php
             } else {
                require "Utils/failToLoadPage.php";

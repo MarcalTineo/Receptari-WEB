@@ -19,22 +19,30 @@
    </nav>
 
    <div id="header_user_tools">
-      <div id="header_logged_user">
-         <div id="header_profile" class="header_user_tools_button">
-            <a href="perfil.php">Perfil</a>
+      <?php
+      if ($session->isLoggedIn()) {
+         ?>
+         <div id="header_logged_user">
+            <div id="header_profile" class="header_user_tools_button">
+               <a href="perfil.php">Perfil</a>
+            </div>
+            <div id="header_create_recipe" class="header_user_tools_button">
+               <a href="novaRecepta.php">Nova Recepta</a>
+            </div>
          </div>
-         <div id="header_create_recipe" class="header_user_tools_button">
-            <a href="novaRecepta.php">Nova Recepta</a>
+         <?php
+      } else {
+         ?>
+         <div id="header_viewer_user">
+            <div id="header_login" class="header_user_tools_button">
+               <a href="login.php">Login</a>
+            </div>
+            <div id="header_register" class="header_user_tools_button">
+               <a href="registre.php">Registra't</a>
+            </div>
          </div>
-      </div>
-      <div id="header_viewer_user">
-         <div id="header_login" class="header_user_tools_button">
-            <a href="login.php">Login</a>
-         </div>
-         <div id="header_register" class="header_user_tools_button">
-            <a href="registre.php">Registra't</a>
-         </div>
-      </div>
-
+         <?php
+      }
+      ?>
    </div>
 </header>

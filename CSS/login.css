@@ -1,0 +1,72 @@
+#login_box {
+   margin: 0px auto;
+   width: 500px;
+   display: flex;
+   flex-flow: column nowrap;
+   padding: 20px;
+   box-shadow: 0px 0px 8px 8px var(--shadow-color);
+}
+
+#login_box > h2 {
+   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#login_box > label {
+   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login_input {
+   margin: 10px 0px;
+   background-color: var(--greyD);
+   border: none;
+   border-bottom: 2px solid var(--bg-color);
+   height: 35px;
+   padding: 0px 12px;
+   color: var(--text-color);
+   outline: none;
+   transition: 200ms;
+}
+
+.login_input:focus {
+   border-bottom: 2px solid var(--secondary-color);
+   border-radius: 0px;
+   background-color: var(--bg-color);
+}
+
+#login_submit {
+   height: 35px;
+   background-color: var(--secondary-color);
+   border-radius: 28px;
+   color: var(--title-color);
+   transition: 200ms;
+   border: none;
+   outline: none;
+   margin: 10px 0px;
+}
+
+#login_submit:hover {
+   background-color: var(--primary-color);
+}
+
+#login_box > a {
+   text-decoration: none;
+}
+
+#login_box > a > div {
+   color: var(--secondary-color);
+   height: 35px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 18px;
+}
+
+#login_box > a:hover > div {
+   background-color: var(--primary-color);
+}
+
+#login_error_msg {
+   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+   color: red;
+   margin: 0px;
+}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +9,17 @@
    require "Utils/requireHead.php";
    ?>
 </head>
+
 <body>
+   <?php
+   require "Utils/requireCRUDs.php";
+   require "Utils/CheckSession.php";
+   ?>
    <div id="page_wrapper">
 
       <?php
       require "Page_component/header.php";
+
       ?>
       <main>
          <div id="content">
@@ -24,4 +31,5 @@
       ?>
    </div>
 </body>
+
 </html>
