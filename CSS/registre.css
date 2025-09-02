@@ -1,0 +1,146 @@
+/** @format */
+
+#registre_container {
+	display: grid;
+	grid-template-areas:
+		"title title title"
+		"sectionName sectionName sectionName"
+		"name surname1 surname2"
+		"sectionContact sectionContact sectionContact"
+		"email phone ."
+		"address address address"
+		"sectionLogin sectionLogin sectionLogin"
+		"username . ."
+		"password repeatPassword ."
+		". submit .";
+	/* grid-template-areas:
+		"title title title"
+		"sectionName sectionName sectionName"
+		"name surname1 surname2"
+		"sectionContact sectionContact sectionContact"
+		"email phone ."
+		"adress address adress"; */
+	/*
+		"sectionLogin sectionLogin sectionLogin"
+		"username a a"
+		"password repeatPassword a"
+		"submit submit submit"; */
+
+	grid-template-columns: 1fr 1fr 1fr;
+	column-gap: 20px;
+	row-gap: 10px;
+	width: 100%;
+}
+#registre_title {
+	grid-area: title;
+	width: 100%;
+}
+#registre_section_name {
+	grid-area: sectionName;
+}
+
+#registre_nom {
+	grid-area: name;
+}
+
+#registre_cognom1 {
+	grid-area: surname1;
+}
+#registre_cognom2 {
+	grid-area: surname2;
+}
+#registre_email {
+	grid-area: email;
+}
+#registre_tel {
+	grid-area: phone;
+}
+#registre_address {
+	grid-area: address;
+}
+#registre_username {
+	grid-area: username;
+}
+#registre_password {
+	grid-area: password;
+}
+#registre_Rpassword {
+	grid-area: repeatPassword;
+}
+#registre_section_contact {
+	grid-area: sectionContact;
+}
+#registre-section-login {
+	grid-area: sectionLogin;
+}
+#register_submit {
+	grid-area: submit;
+	width: 100%;
+	height: 60px;
+}
+#register_submit > input {
+	width: 100%;
+	height: 100%;
+	border-radius: 30px;
+	border: none;
+	background-color: var(--secondary-color);
+	color: var(--title-color);
+	transition: 200ms;
+	font-size: 20px;
+}
+#register_submit > input:hover {
+	background-color: var(--primary-color);
+	color: var(--secondary-color);
+}
+
+#registre_container > h3 {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	border-bottom: 3px solid var(--secondary-color);
+	color: var(--text-color);
+	margin: 5px;
+}
+#registre_container > h2 {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	color: var(--title-color);
+	background-color: var(--secondary-color);
+	margin: 0px;
+	border-radius: 5px;
+	box-sizing: border-box;
+	padding: 20px;
+}
+
+.registre_input {
+	height: 70px;
+	border: 2px solid var(--secondary-color);
+	border-radius: 5px;
+}
+.registre_input:has(.registre_input_field > input:focus) > .registre_input_title {
+	font-size: 16px;
+}
+
+.registre_input_field {
+	margin: 0px 16px;
+	width: 100%;
+}
+.registre_input_field > input {
+	width: calc(100% - 36px);
+	height: 30px;
+	outline: none;
+	border: none;
+	font-size: 20px;
+	color: var(--text-color);
+}
+.registre_input_field > input:focus {
+	border-bottom: 1px solid var(--secondary-color);
+}
+
+.registre_input_title > label {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.registre_input_title {
+	height: 16px;
+	margin: 5px 10px;
+	font-size: 0px;
+	transition: 200ms;
+	padding-left: 8px;
+}

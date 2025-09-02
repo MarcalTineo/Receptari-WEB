@@ -81,22 +81,17 @@ class SessionManager
          return false;
       }
 
-      var_dump($logged_user->getUsername());
-      var_dump($_SESSION['username']);
-      var_dump($logged_user->getRoleId());
-      var_dump($_SESSION['role']);
+
       //if data stored in session matches database
       if (
          $logged_user->getUsername() == $_SESSION['username'] &&
          $logged_user->getRoleId() == $_SESSION['role']
       ) {
-         var_dump(0);
          //updates last acces and verifies user.
          $logged_user->setLastAccess(date('Y-m-d H:i:s'));
          $logged_user->updateSelf();
          return true;
       } else {
-         var_dump(1);
          //revokes session
          $this->logout();
          return false;

@@ -1,0 +1,68 @@
+/** @format */
+
+#nr_wrapper {
+	display: grid;
+	margin: 20px;
+	grid-template-areas:
+		"title title"
+		"name name";
+	column-gap: 20px;
+	row-gap: 16px;
+}
+
+#nr_title {
+	grid-area: title;
+	width: 100%;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	color: var(--title-color);
+	background-color: var(--secondary-color);
+	margin: 0px;
+	border-radius: 5px;
+	box-sizing: border-box;
+	padding: 20px;
+}
+
+#nr_title > h2 {
+	margin: 0px;
+}
+
+#nr_recipeTitle {
+	grid-area: name;
+	width: 100%;
+}
+
+.nr_input {
+	height: 70px;
+	border: 2px solid var(--secondary-color);
+	border-radius: 5px;
+}
+.nr_input:has(.nr_input_field > input:focus) > .nr_input_title {
+	font-size: 16px;
+}
+
+.nr_input_field {
+	margin: 0px 16px;
+	width: 100%;
+}
+.nr_input_field > input {
+	width: calc(100% - 36px);
+	height: 30px;
+	outline: none;
+	border: none;
+	font-size: 20px;
+	color: var(--text-color);
+}
+.nr_input_field > input:focus {
+	border-bottom: 1px solid var(--secondary-color);
+}
+
+.nr_input_title > label {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.nr_input_title {
+	height: 16px;
+	margin: 5px 10px;
+	font-size: 0px;
+	transition: 200ms;
+	padding-left: 8px;
+}

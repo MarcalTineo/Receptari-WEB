@@ -147,7 +147,7 @@ class User
     */
    public function createSelf()
    {
-      User::create(
+      $id = User::create(
          $this->name,
          $this->surname1,
          $this->surname2,
@@ -160,6 +160,7 @@ class User
          $this->recipes_created,
          $this->last_access
       );
+      $this->id = $id;
    }
    public function updateSelf()
    {
@@ -201,8 +202,9 @@ class User
       $conn = (new Connection("localhost", "root", "", "receptari"))->connect();
       $result = $conn->query("INSERT INTO users (name, surname1, surname2, role_id, email, phone, username, password, address, recipes_created, last_acces) VALUES 
       ('$name', '$surname1', '$surname2', $role_id, '$email', '$phone', '$username', '$password', '$address', $recipes_created, '$last_access')");
+      $id = $conn->insert_id;
       $conn->close();
-      return $result;
+      return $id;
    }
    public static function read($id)
    {
@@ -223,7 +225,7 @@ class User
    {
       $conn = (new Connection("localhost", "root", "", "receptari"))->connect();
       $result = $conn->query("UPDATE users SET name = '$name', surname1 = '$surname1', surname2 = '$surname2', role_id = $role_id, email = '$email',
-      phone = '$phone', username = '$username', password = '$password' address = '$address', recipes_created = '$recipes_created', last_acces = '$last_access' WHERE id = $id");
+      phone = '$phone', username = '$username', password = '$password', address = '$address', recipes_created = '$recipes_created', last_acces = '$last_access' WHERE id = $id");
       $conn->close();
       return $result;
    }

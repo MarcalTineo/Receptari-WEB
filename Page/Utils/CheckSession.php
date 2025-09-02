@@ -2,7 +2,7 @@
 require_once "SessionManager.php";
 
 $session = new SessionManager();
-var_dump($_SESSION);
+// var_dump($_SESSION);
 
 // If no user data, start guest session
 if (!isset($_SESSION['user_id'])) {
