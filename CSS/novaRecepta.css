@@ -1,143 +1,209 @@
 /** @format */
 
 #nr_wrapper {
-	display: grid;
-	margin: 20px;
-	grid-template-areas:
-		"title title title"
-		"name name name"
-		"category tags tags"
-		"descr descr descr"
-		"sectIngredients sectIngredients sectIngredients"
-		"ingredients ingredients ingredients"
-		"sectSteps sectSteps sectSteps"
-		"steps steps steps";
-	column-gap: 20px;
-	row-gap: 16px;
-	grid-template-columns: 1fr 1fr 1fr;
+   display: grid;
+   margin: 20px;
+   grid-template-areas:
+      "title title title"
+      "name name name"
+      "category tags tags"
+      "descr descr descr"
+      "sectIngredients sectIngredients sectIngredients"
+      "ingredients ingredients ingredients"
+      "sectSteps sectSteps sectSteps"
+      "steps steps steps";
+   column-gap: 20px;
+   row-gap: 16px;
+   grid-template-columns: 1fr 1fr 1fr;
 }
 
 #nr_wrapper > h3 {
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-	border-bottom: 3px solid var(--secondary-color);
-	color: var(--text-color);
-	margin: 5px;
+   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+   border-bottom: 3px solid var(--secondary-color);
+   color: var(--text-color);
+   margin: 5px;
 }
 
 #nr_title {
-	grid-area: title;
-	width: 100%;
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-	color: var(--title-color);
-	background-color: var(--secondary-color);
-	margin: 0px;
-	border-radius: 5px;
-	box-sizing: border-box;
-	padding: 20px;
+   grid-area: title;
+   width: 100%;
+   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+   color: var(--title-color);
+   background-color: var(--secondary-color);
+   margin: 0px;
+   border-radius: 5px;
+   box-sizing: border-box;
+   padding: 20px;
 }
 
 #nr_title > h2 {
-	margin: 0px;
+   margin: 0px;
 }
 
 #nr_title_field {
-	grid-area: name;
-	width: 100%;
+   grid-area: name;
+   width: 100%;
 }
 
 #nr_category_field {
-	grid-area: category;
+   grid-area: category;
 }
 #nr_tags_field {
-	grid-area: tags;
+   grid-area: tags;
+}
+
+#nr_description_field {
+   grid-area: descr;
+   height: 200px;
 }
 
 .nr_input {
-	height: 70px;
-	border: 2px solid var(--secondary-color);
-	border-radius: 5px;
-	box-sizing: border-box;
+   height: 70px;
+   border: 2px solid var(--secondary-color);
+   border-radius: 5px;
+   box-sizing: border-box;
 }
 .nr_input:focus-within > .nr_input_title,
 .nr_input:hover > .nr_input_title {
-	font-size: 16px;
+   font-size: 16px;
 }
 
 .nr_input_field {
-	margin: 0px 16px;
-	width: 100%;
+   margin: 0px 16px;
+   width: 100%;
 }
 .nr_input_field > * {
-	width: calc(100% - 36px);
-	height: 30px;
-	outline: none;
-	border: none;
-	font-size: 20px;
-	color: var(--text-color);
+   width: calc(100% - 36px);
+   height: 30px;
+   outline: none;
+   border: none;
+   font-size: 20px;
+   color: var(--text-color);
 }
 .nr_input_field > *:focus {
-	border-bottom: 1px solid var(--secondary-color);
+   border-bottom: 1px solid var(--secondary-color);
 }
 
 .nr_input_title {
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-	height: 16px;
-	margin: 7px 10px;
-	font-size: 0px;
-	transition: 200ms;
-	padding-left: 8px;
+   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+   height: 16px;
+   margin: 7px 10px;
+   font-size: 0px;
+   transition: 200ms;
+   padding-left: 8px;
 }
 
 .nr_input_select {
-	display: flex;
-	width: 100%;
-	flex-flow: row nowrap;
-	align-items: center;
-	justify-content: space-around;
-	padding: 0px 5px;
-	box-sizing: border-box;
+   display: flex;
+   width: 100%;
+   flex-flow: row nowrap;
+   align-items: center;
+   justify-content: space-around;
+   padding: 0px 5px;
+   box-sizing: border-box;
 }
 
 .nr_tag {
-	border: 2px solid var(--primary-color);
-	width: 100%;
-	margin: 0px 5px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 30px;
-	border-radius: 5px;
-	background-color: var(--primary-color);
-	color: var(--title-color);
+   border: 2px solid var(--primary-color);
+   width: 100%;
+   margin: 0px 5px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 30px;
+   border-radius: 5px;
+   background-color: var(--primary-color);
+   color: var(--title-color);
 }
 .nr_tag > p {
-	margin: 0px;
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-	user-select: none;
+   margin: 0px;
+   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+   user-select: none;
 }
 
 .nr_tag:hover {
-	background-color: var(--background-color);
-	border-color: var(--secondary-color);
-	color: var(--secondary-color);
-	cursor: pointer;
+   background-color: var(--background-color);
+   border-color: var(--secondary-color);
+   color: var(--secondary-color);
+   cursor: pointer;
 }
 
 .nr_tag_selected {
-	color: var(--title-color);
-	background-color: var(--secondary-color);
-	border-color: var(--secondary-color);
+   color: var(--title-color);
+   background-color: var(--secondary-color);
+   border-color: var(--secondary-color);
 }
 
 .nr_input_selection {
-	display: none;
-	visibility: hidden;
+   display: none;
+   visibility: hidden;
 }
 
 #nr_section_ingredients {
-	grid-area: sectIngredients;
+   grid-area: sectIngredients;
 }
 
 #nr_section_steps {
-	grid-area: sectSteps;
+   grid-area: sectSteps;
+}
+
+#nr_description {
+   height: min-content;
+   resize: none;
+}
+
+#nr_ingredients_wrapper {
+   grid-area: ingredients;
+   height: fit-content;
+   min-height: 300px;
+   display: grid;
+   grid-template-areas:
+      "search ingredients"
+      "suggestions ingredients"
+      "opcions ingredients";
+   grid-template-columns: 1fr 2fr;
+   grid-template-rows: min-content auto;
+   column-gap: 20px;
+   row-gap: 16px;
+}
+#nr_ingredient_search {
+   grid-area: search;
+}
+
+#nr_ingredient_suggestions {
+   grid-area: suggestions;
+}
+
+#nr_ingredients_opcions {
+   grid-area: opcions;
+}
+
+.nr_input_sugestions {
+   height: fit-content;
+   box-sizing: border-box;
+   padding: 10px;
+   border: 2px solid var(--secondary-color);
+   border-radius: 5px;
+   max-height: 300px;
+}
+
+.nr_input_sugestions ul {
+   list-style-type: none;
+   margin: 0px;
+   padding: 0px;
+   color: var(--text-color);
+   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.nr_input_sugestions li {
+   padding: 3px;
+   box-sizing: border-box;
+   border: 5px;
+}
+.nr_input_sugestions li:hover {
+   background-color: var(--greyA);
+}
+
+#nr_ingredients_opcions > p {
+   padding: 10px;
 }

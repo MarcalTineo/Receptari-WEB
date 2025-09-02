@@ -3,7 +3,8 @@
    --bg-color: #ffffff;
    --title-color: #f3efd9;
    --text-color: #2f2f2f;
-   --primary-color: #889200;
+   --primary-color: #858d1d;
+   /* --primary-color: #889200; */
    --secondary-color: #283c0f;
 
    --shadow-color: #00000037;
@@ -24,4 +25,9 @@
    --greyD: #ddd;
    --greyE: #eee;
    --greyF: #fff;
+}
+
+* {
+   box-sizing: border-box;
+   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
