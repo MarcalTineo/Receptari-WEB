@@ -121,7 +121,6 @@
                      </div>
                      <div class="nr_input_sugestions" id="nr_ingredient_suggestions">
                         <ul>
-
                            <li>Patata</li>
                            <li>Patata</li>
                            <li>Patata</li>
