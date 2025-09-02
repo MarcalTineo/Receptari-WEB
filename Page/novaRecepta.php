@@ -9,6 +9,7 @@
    require "Utils/requireHead.php";
    ?>
    <link rel="stylesheet" href="../CSS/novaRecepta.css">
+   <script src="../JS/novaRecepta.js"></script>
 </head>
 
 <body>
@@ -54,39 +55,51 @@
                      <!-- <input type="text" name="nr_category" id="nr_category" placeholder="Categoria"> -->
                   </div>
                </div>
-               <div class="nr_input" id="nr_tags_field">
-                  <div id="nr_difficulty">
-                     <div class="nr_tag nr_tag_selected">
+               <div class="nr_input" id="nr_dificulty_field">
+                  <div class="nr_input_title">
+                     <label for="nr_title">Dificultat</label>
+                  </div>
+                  <div class="nr_input_select">
+                     <div class="nr_tag">
                         <p>Fàcil</p>
                      </div>
-                     <div class="nr_tag nr_tag_unselected">
+                     <div class="nr_tag">
                         <p>Mitjà</p>
                      </div>
-                     <div class="nr_tag nr_tag_unselected">
+                     <div class="nr_tag">
                         <p>Difícil</p>
                      </div>
-                  </div>
-                  <div id="nr_servings">
-                     <div class="nr_tag nr_tag_selected">
-                        <p>1</p>
-                     </div>
-                     <div class="nr_tag nr_tag_unselected">
-                        <p>2</p>
-                     </div>
-                     <div class="nr_tag nr_tag_unselected">
-                        <p>4</p>
-                     </div>
-                     <div class="nr_tag nr_tag_unselected">
-                        <p>6</p>
-                     </div>
-                     <div class="nr_tag nr_tag_unselected">
-                        <p>8</p>
-                     </div>
-                     <div class="nr_tag nr_tag_unselected">
-                        <p>10</p>
-                     </div>
+                     <p class="nr_input_selection"></p>
                   </div>
                </div>
+               <div class="nr_input" id="nr_dificulty_field">
+                  <div class="nr_input_title">
+                     <label for="nr_title">Racions</label>
+                  </div>
+                  <div class="nr_input_select">
+                     <div class="nr_tag ">
+                        <p>1</p>
+                     </div>
+                     <div class="nr_tag">
+                        <p>2</p>
+                     </div>
+                     <div class="nr_tag">
+                        <p>4</p>
+                     </div>
+                     <div class="nr_tag">
+                        <p>6</p>
+                     </div>
+                     <div class="nr_tag">
+                        <p>8</p>
+                     </div>
+                     <div class="nr_tag">
+                        <p>10</p>
+                     </div>
+                     <p class="nr_input_selection"></p>
+                  </div>
+               </div>
+               <h3 id="nr_section_ingredients">Ingredients</h3>
+               <h3 id="nr_section_steps">Passos</h3>
 
 
             </div>

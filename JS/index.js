@@ -6,4 +6,7 @@ window.onload = function () {
 	try {
 		OnLoadRegister();
 	} catch (error) {}
+	try {
+		OnLoadNewRecipe();
+	} catch (error) {}
 };

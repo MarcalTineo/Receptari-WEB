@@ -7,6 +7,7 @@
 		"title title title"
 		"name name name"
 		"category tags tags"
+		"descr descr descr"
 		"sectIngredients sectIngredients sectIngredients"
 		"ingredients ingredients ingredients"
 		"sectSteps sectSteps sectSteps"
@@ -14,6 +15,13 @@
 	column-gap: 20px;
 	row-gap: 16px;
 	grid-template-columns: 1fr 1fr 1fr;
+}
+
+#nr_wrapper > h3 {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	border-bottom: 3px solid var(--secondary-color);
+	color: var(--text-color);
+	margin: 5px;
 }
 
 #nr_title {
@@ -48,8 +56,10 @@
 	height: 70px;
 	border: 2px solid var(--secondary-color);
 	border-radius: 5px;
+	box-sizing: border-box;
 }
-.nr_input:focus-within > .nr_input_title {
+.nr_input:focus-within > .nr_input_title,
+.nr_input:hover > .nr_input_title {
 	font-size: 16px;
 }
 
@@ -72,8 +82,62 @@
 .nr_input_title {
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	height: 16px;
-	margin: 5px 10px;
+	margin: 7px 10px;
 	font-size: 0px;
 	transition: 200ms;
 	padding-left: 8px;
+}
+
+.nr_input_select {
+	display: flex;
+	width: 100%;
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: space-around;
+	padding: 0px 5px;
+	box-sizing: border-box;
+}
+
+.nr_tag {
+	border: 2px solid var(--primary-color);
+	width: 100%;
+	margin: 0px 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 30px;
+	border-radius: 5px;
+	background-color: var(--primary-color);
+	color: var(--title-color);
+}
+.nr_tag > p {
+	margin: 0px;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	user-select: none;
+}
+
+.nr_tag:hover {
+	background-color: var(--background-color);
+	border-color: var(--secondary-color);
+	color: var(--secondary-color);
+	cursor: pointer;
+}
+
+.nr_tag_selected {
+	color: var(--title-color);
+	background-color: var(--secondary-color);
+	border-color: var(--secondary-color);
+}
+
+.nr_input_selection {
+	display: none;
+	visibility: hidden;
+}
+
+#nr_section_ingredients {
+	grid-area: sectIngredients;
+}
+
+#nr_section_steps {
+	grid-area: sectSteps;
 }
