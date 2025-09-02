@@ -4,10 +4,16 @@
 	display: grid;
 	margin: 20px;
 	grid-template-areas:
-		"title title"
-		"name name";
+		"title title title"
+		"name name name"
+		"category tags tags"
+		"sectIngredients sectIngredients sectIngredients"
+		"ingredients ingredients ingredients"
+		"sectSteps sectSteps sectSteps"
+		"steps steps steps";
 	column-gap: 20px;
 	row-gap: 16px;
+	grid-template-columns: 1fr 1fr 1fr;
 }
 
 #nr_title {
@@ -26,9 +32,16 @@
 	margin: 0px;
 }
 
-#nr_recipeTitle {
+#nr_title_field {
 	grid-area: name;
 	width: 100%;
+}
+
+#nr_category_field {
+	grid-area: category;
+}
+#nr_tags_field {
+	grid-area: tags;
 }
 
 .nr_input {
@@ -36,7 +49,7 @@
 	border: 2px solid var(--secondary-color);
 	border-radius: 5px;
 }
-.nr_input:has(.nr_input_field > input:focus) > .nr_input_title {
+.nr_input:focus-within > .nr_input_title {
 	font-size: 16px;
 }
 
@@ -44,7 +57,7 @@
 	margin: 0px 16px;
 	width: 100%;
 }
-.nr_input_field > input {
+.nr_input_field > * {
 	width: calc(100% - 36px);
 	height: 30px;
 	outline: none;
@@ -52,14 +65,12 @@
 	font-size: 20px;
 	color: var(--text-color);
 }
-.nr_input_field > input:focus {
+.nr_input_field > *:focus {
 	border-bottom: 1px solid var(--secondary-color);
 }
 
-.nr_input_title > label {
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
 .nr_input_title {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	height: 16px;
 	margin: 5px 10px;
 	font-size: 0px;

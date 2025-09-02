@@ -67,6 +67,14 @@ class Category
       return $result;
    }
 
+   public static function readAll()
+   {
+      $conn = (new Connection("localhost", "root", "", "receptari"))->connect();
+      $result = $conn->query("SELECT * FROM categories");
+      $conn->close();
+      return $result;
+   }
+
    public static function create($name, $description)
    {
       $conn = (new Connection("localhost", "root", "", "receptari"))->connect();
