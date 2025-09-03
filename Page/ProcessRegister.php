@@ -6,7 +6,7 @@ if (
    $_SERVER["REQUEST_METHOD"] === "POST" &&
    !empty($_POST)
 ) {
-   var_dump($_POST);
+   // var_dump($_POST);
    //check data against database
    //email, phone number and username must be unique.
    $conn = (new Connection("localhost", "root", "", "receptari"))->connect();

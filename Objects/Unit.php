@@ -86,6 +86,14 @@ class Unit
       return $result;
    }
 
+   public static function readAll()
+   {
+      $conn = (new Connection("localhost", "root", "", "receptari"))->connect();
+      $result = $conn->query("SELECT * FROM units");
+      $conn->close();
+      return $result;
+   }
+
    public static function create($metric, $imperial, $conversion)
    {
       $conn = (new Connection("localhost", "root", "", "receptari"))->connect();

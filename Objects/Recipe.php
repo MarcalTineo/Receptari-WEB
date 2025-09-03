@@ -59,14 +59,14 @@ class Recipe
                $this->steps,
                [
                   'step_index' => (int) $value['step_index'],
-                  'text' => ['text']
+                  'text' => $value['text']
                ]
             );
          }
          //ordernar els passos
-         usort($this->steps, function ($a, $b) {
-            return $b[0] <=> $a[0];
-         });
+         // usort($this->steps, function ($a, $b) {
+         //    return $b[0] <=> $a[0];
+         // });
 
          //reviews
          $reviews_return = Review::readWithRecipeId($id);
