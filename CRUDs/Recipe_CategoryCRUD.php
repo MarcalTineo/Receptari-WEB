@@ -77,7 +77,7 @@ class Recipe_CategoryCRUD
       return $result;
    }
 
-   public static function create($recipe_id, $category_id)
+   public static function create(int $recipe_id, int $category_id)
    {
       $conn = (new Connection("localhost", "root", "", "receptari"))->connect();
       $conn->query("INSERT INTO `recipe_category` (recipe_id, category_id) VALUES ($recipe_id, $category_id)");

@@ -25,10 +25,13 @@
       <main>
          <div id="content">
             <form action="ProcessNewRecipe.php" method="post">
+               <!-- gets user id -->
+               <input type="hidden" name="nr_autor" value="<?php echo $session->get('user_id') ?>">
                <div id="nr_wrapper">
                   <div id="nr_title">
                      <h2>Nova Recepta</h2>
                   </div>
+                  <!-- titol de la recepta -->
                   <div class="nr_input" id="nr_title_field">
                      <div class="nr_input_title">
                         <label for="nr_title">Títol de la Recepta</label>
@@ -37,18 +40,20 @@
                         <input type="text" name="nr_title" id="nr_titleRecepta" placeholder="Títol de la Recepta">
                      </div>
                   </div>
+
+                  <!-- categoria -->
                   <div class="nr_input" id="nr_category_field">
                      <div class="nr_input_title">
                         <label for="nr_category">Categoria</label>
                      </div>
                      <div class="nr_input_field">
-                        <select name="nr_category" id="nr_category">
-                           <option value="" disabled selected>Categories</option>
+                        <select name="nr_category" id="nr_category" required>
+                           <option value="null" disabled selected>Categories</option>
                            <?php
                            $categories = Category::readAll();
                            foreach ($categories as $key => $value) {
                               ?>
-                              <option value="<?php echo $value['name'] ?>"><?php echo $value['name'] ?></option>
+                              <option value="<?php echo $value['id'] ?>"><?php echo $value['name'] ?></option>
                               <?php
                            }
                            ?>
@@ -72,7 +77,7 @@
                         <input type="hidden" name="nr_dificultat" class="nr_input_selection">
                      </div>
                   </div>
-                  <div class="nr_input" id="nr_dificulty_field">
+                  <div class="nr_input" id="nr_rations_field">
                      <div class="nr_input_title">
                         <label for="nr_title">Racions</label>
                      </div>

@@ -184,7 +184,7 @@ class Recipe
    }
    public function setSteps($steps_id)
    {
-      $this->steps_id = $steps_id;
+      $this->steps = $steps_id;
    }
    public function getReviews()
    {
@@ -201,7 +201,7 @@ class Recipe
 
    public function CreateSelf()
    {
-      Recipe::create($this->name, $this->description, $this->user_autor_id);
+      $id = Recipe::create($this->name, $this->description, $this->user_autor_id);
       foreach ($this->tags_id as $value) {
          Recipe_TagCRUD::create($this->id, $value);
       }
@@ -223,6 +223,7 @@ class Recipe
             $value['text']
          );
       }
+      return $id;
    }
 
    public function updateSelf()
@@ -294,12 +295,14 @@ class Recipe
       //--
       $step_index = 0;
       foreach ($this->steps as $key => $value) {
-         //--Update steps using old ids
-         Step::update($old_step_ids[$step_index], $this->id, $this->steps[$step_index]['step_index'], $this->steps[$step_index]['text']);
 
+         //while there is old ids -> update, if dont -> create
          if ($step_index >= count($old_step_ids)) {
             //--Create new steps if run out of ids
             Step::create($this->id, $this->steps[$step_index]['step_index'], $this->steps[$step_index]['text']);
+         } else {
+            //--Update steps using old ids
+            Step::update($old_step_ids[$step_index], $this->id, $this->steps[$step_index]['step_index'], $this->steps[$step_index]['text']);
          }
          $step_index++;
       }
@@ -322,18 +325,20 @@ class Recipe
 
       $i = 0;
       foreach ($this->ingredients as $key => $value) {
-         //overwrite using old ids
-         Recipe_Ingredient::update(
-            $old_ingredient_ids[$i],
-            $this->id,
-            $this->ingredients[$i]['ingredient_id'],
-            $this->ingredients[$i]['quantity'],
-            $this->ingredients[$i]['unit_id'],
-         );
+
 
          if ($i >= count($old_ingredient_ids)) {
             //create new ids if necessary
             Recipe_Ingredient::create(
+               $this->id,
+               $this->ingredients[$i]['ingredient_id'],
+               $this->ingredients[$i]['quantity'],
+               $this->ingredients[$i]['unit_id'],
+            );
+         } else {
+            //overwrite using old ids
+            Recipe_Ingredient::update(
+               $old_ingredient_ids[$i],
                $this->id,
                $this->ingredients[$i]['ingredient_id'],
                $this->ingredients[$i]['quantity'],
@@ -381,7 +386,9 @@ class Recipe
    {
       $conn = (new Connection("localhost", "root", "", "receptari"))->connect();
       $conn->query("INSERT INTO recipes (name, description, user_autor_id) VALUES ('$name', '$description', '$user_autor_id')");
+      $id = $conn->insert_id;
       $conn->close();
+      return $id;
    }
 
    public static function update($id, $name, $description, $user_autor_id)
