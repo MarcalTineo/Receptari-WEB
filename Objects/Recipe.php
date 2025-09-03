@@ -6,8 +6,8 @@ class Recipe
    private $description = "";
    private $categories_id = [];
    private $tags_id = [];
-   private $ingredients = [];
-   private $steps = [];
+   private $ingredients_id = [];
+   private $steps_id = [];
    private $reviews_id = [];
    private $user_autor_id = "";
    private $created_at = "";
@@ -40,10 +40,11 @@ class Recipe
          }
 
          //ingredients
+         // $ingredients_id = Recipe_Ingredient::readWithRecipeId($id);
          $ingredients_return = Recipe_Ingredient::readWithRecipeId($id);
          foreach ($ingredients_return as $key => $value) {
             array_push(
-               $this->ingredients,
+               $this->ingredients_id,
                [
                   'ingredient_id' => (int) $value['ingredient_id'],
                   'quantity' => (float) $value['quantity'],
@@ -53,17 +54,18 @@ class Recipe
          }
 
          //steps
+         // $steps_id = Step::readWithRecipeId($id);
          $steps_return = Step::readWithRecipeId($id);
          foreach ($steps_return as $key => $value) {
             array_push(
-               $this->steps,
+               $this->steps_id,
                [
                   'step_index' => (int) $value['step_index'],
                   'text' => $value['text']
                ]
             );
          }
-         //ordernar els passos
+         // ordernar els passos
          // usort($this->steps, function ($a, $b) {
          //    return $b[0] <=> $a[0];
          // });
@@ -171,20 +173,29 @@ class Recipe
    }
    public function getIngredients()
    {
-      return $this->ingredients;
+      return $this->ingredients_id;
    }
    public function setIngredients($ingredients)
    {
-      $this->ingredients = $ingredients;
+      $this->ingredients_id = $ingredients;
+   }
+   public function addIngredient($ingredient_id, $quantity, $unit_id)
+   {
+
+   }
+
+   public function removeIngredient($ingredient_id)
+   {
+
    }
 
    public function getSteps()
    {
-      return $this->steps;
+      return $this->steps_id;
    }
    public function setSteps($steps_id)
    {
-      $this->steps = $steps_id;
+      $this->steps_id = $steps_id;
    }
    public function getReviews()
    {
@@ -208,7 +219,7 @@ class Recipe
       foreach ($this->categories_id as $value) {
          Recipe_CategoryCRUD::create($this->id, $value);
       }
-      foreach ($this->ingredients as $value) {
+      foreach ($this->ingredients_id as $value) {
          Recipe_Ingredient::create(
             $this->id,
             $value['ingredient_id'],
@@ -216,7 +227,7 @@ class Recipe
             $value['unit_id']
          );
       }
-      foreach ($this->steps as $value) {
+      foreach ($this->steps_id as $value) {
          Step::create(
             $this->id,
             $value['step_index'],
@@ -294,15 +305,15 @@ class Recipe
       }
       //--
       $step_index = 0;
-      foreach ($this->steps as $key => $value) {
+      foreach ($this->steps_id as $key => $value) {
 
          //while there is old ids -> update, if dont -> create
          if ($step_index >= count($old_step_ids)) {
             //--Create new steps if run out of ids
-            Step::create($this->id, $this->steps[$step_index]['step_index'], $this->steps[$step_index]['text']);
+            Step::create($this->id, $this->steps_id[$step_index]['step_index'], $this->steps_id[$step_index]['text']);
          } else {
             //--Update steps using old ids
-            Step::update($old_step_ids[$step_index], $this->id, $this->steps[$step_index]['step_index'], $this->steps[$step_index]['text']);
+            Step::update($old_step_ids[$step_index], $this->id, $this->steps_id[$step_index]['step_index'], $this->steps_id[$step_index]['text']);
          }
          $step_index++;
       }
@@ -324,25 +335,24 @@ class Recipe
       }
 
       $i = 0;
-      foreach ($this->ingredients as $key => $value) {
-
+      foreach ($this->ingredients_id as $key => $value) {
 
          if ($i >= count($old_ingredient_ids)) {
             //create new ids if necessary
             Recipe_Ingredient::create(
                $this->id,
-               $this->ingredients[$i]['ingredient_id'],
-               $this->ingredients[$i]['quantity'],
-               $this->ingredients[$i]['unit_id'],
+               $this->ingredients_id[$i]['ingredient_id'],
+               $this->ingredients_id[$i]['quantity'],
+               $this->ingredients_id[$i]['unit_id'],
             );
          } else {
             //overwrite using old ids
             Recipe_Ingredient::update(
                $old_ingredient_ids[$i],
                $this->id,
-               $this->ingredients[$i]['ingredient_id'],
-               $this->ingredients[$i]['quantity'],
-               $this->ingredients[$i]['unit_id'],
+               $this->ingredients_id[$i]['ingredient_id'],
+               $this->ingredients_id[$i]['quantity'],
+               $this->ingredients_id[$i]['unit_id'],
             );
          }
          $i++;

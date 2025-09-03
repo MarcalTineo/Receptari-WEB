@@ -131,10 +131,23 @@
                            <select name="nr_ingredient" id="nr_ingredient">
                               <option value="" selected disabled>Ingredient</option>
                               <?php
-                              $ingredients = Ingredient::readAll();
+                              //llegir la llista d'ingredients
+                              $ingredients_result = Ingredient::readAll();
+
+                              $ingredients = [];
+                              while ($ingr = $ingredients_result->fetch_assoc()) {
+                                 $ingredients[] = $ingr;
+                              }
+
+                              //ordenar la llista alfabeticament
+                              usort($ingredients, function ($a, $b) {
+                                 return strcmp($a['name'], $b['name']);
+                              });
+
+                              //generar les opcions del select
                               foreach ($ingredients as $key => $value) {
                                  ?>
-                                 <option value="<?php echo $value['name'] ?>"><?php echo $value['name'] ?></option>
+                                 <option value="<?php echo $value['id'] ?>"><?php echo $value['name'] ?></option>
                                  <?php
                               }
                               ?>
@@ -150,7 +163,7 @@
                               $units = Unit::readAll();
                               foreach ($units as $key => $value) {
                                  ?>
-                                 <option value="<?php echo $value['metric'] ?>"><?php echo $value['metric'] ?></option>
+                                 <option value="<?php echo $value['id'] ?>"><?php echo $value['metric'] ?></option>
                                  <?php
                               }
                               ?>
@@ -165,7 +178,20 @@
                            <select name="nr_ingredient0" id="nr_ingredient0">
                               <option value="" selected disabled>Ingredient</option>
                               <?php
-                              $ingredients = Ingredient::readAll();
+                              //llegir la llista d'ingredients
+                              $ingredients_result = Ingredient::readAll();
+
+                              $ingredients = [];
+                              while ($ingr = $ingredients_result->fetch_assoc()) {
+                                 $ingredients[] = $ingr;
+                              }
+
+                              //ordenar la llista alfabeticament
+                              usort($ingredients, function ($a, $b) {
+                                 return strcmp($a['name'], $b['name']);
+                              });
+
+                              //generar les opcions del select
                               foreach ($ingredients as $key => $value) {
                                  ?>
                                  <option value="<?php echo $value['id'] ?>"><?php echo $value['name'] ?></option>

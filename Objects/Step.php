@@ -38,7 +38,7 @@ class Step
       $this->recipe_id = $recipe_id;
    }
 
-   public function getStepIndex()
+   public function getStepIndex(): int
    {
       return $this->step_index;
    }
@@ -50,12 +50,12 @@ class Step
 
    public function getText()
    {
-      return $this->step_index;
+      return $this->text;
    }
 
-   public function setText($step_index)
+   public function setText($text)
    {
-      $this->step_index = $step_index;
+      $this->text = $text;
    }
 
    public function getCreatedAt()

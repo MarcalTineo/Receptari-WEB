@@ -66,12 +66,16 @@
                      }
                      ?>
                   </div>
+                  <h3 class="recipe_section_title">Descripció</h3>
+
                   <p id="recipe_description"><?php echo $recipe->getDescription() ?></p>
                </div>
                <div id="recipe_img">
                   <img src="https://picsum.photos/700/700" alt="">
                </div>
                <div id="recipe_ingredients">
+                  <h3 class="recipe_section_title">Ingredients</h3>
+
                   <table>
                      <thead>
                         <tr class="recipe_ingredient_header">
@@ -82,25 +86,25 @@
                      <tbody>
 
                         <?php
-                        $ingredients_rcp_ids = $recipe->getIngredients();
-                        foreach ($ingredients_rcp_ids as $key => $value) {
-                           $ingredient_rcp_obj = new Recipe_Ingredient($value['ingredient_id']);
+                        $ingredients_rcp = Recipe_Ingredient::readWithRecipeId($id_recipe);
+
+                        foreach ($ingredients_rcp as $key => $value) {
                            ?>
                            <tr class="recipe_ingredient_row">
                               <td>
                                  <?php
-                                 $ingredient = new Ingredient($ingredient_rcp_obj->getIngredientId());
+                                 $ingredient = new Ingredient($value['ingredient_id']);
                                  echo $ingredient->getName();
                                  ?>
                               </td>
                               <td>
                                  <?php
-                                 echo $ingredient_rcp_obj->getQuantity();
+                                 echo $value['quantity'];
                                  ?>
                               </td>
                               <td>
                                  <?php
-                                 $unit = new Unit($ingredient_rcp_obj->getUnitId());
+                                 $unit = new Unit($value['unit_id']);
                                  echo $unit->getMetric();
                                  ?>
                               </td>
@@ -113,23 +117,29 @@
                   </table>
                </div>
                <div id="recipe_steps">
+                  <h3 class="recipe_section_title">Preparació</h3>
                   <?php
-                  $steps_recipe_ids = $recipe->getSteps();
+                  $steps_recipe_ids = Step::readWithRecipeId($id_recipe);
                   foreach ($steps_recipe_ids as $key => $value) {
                      $step = new Step($value['id']);
-                     var_dump($step);
                      ?>
                      <div class="recipe_step">
                         <div class="recipe_step_number">
-                           <p></p>
+                           <p>Pas <?php echo $step->getStepIndex() + 1 ?></p>
                         </div>
                         <div class="recipe_step_text">
-                           <p></p>
+                           <p><?php echo $step->getText() ?></p>
                         </div>
                      </div>
                      <?php
                   }
                   ?>
+               </div>
+               <div id="recipe_reviews">
+                  <h3 id="recipe_reviews_title" class="recipe_section_title">Ressenyes</h3>
+                  <div id="recipe_review_list">
+                     Llista
+                  </div>
                </div>
 
                <?php

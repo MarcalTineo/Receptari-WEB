@@ -5,7 +5,7 @@ if (
    $_SERVER["REQUEST_METHOD"] === "POST" &&
    !empty($_POST)
 ) {
-   var_dump($_POST);
+   //var_dump($_POST);
    //create recipe object
    $newRecipe = new Recipe(0);
 

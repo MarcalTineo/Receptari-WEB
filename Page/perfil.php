@@ -9,6 +9,7 @@
    require "Utils/requireHead.php";
    ?>
    <link rel="stylesheet" href="../CSS/perfil.css">
+   <link rel="stylesheet" href="../CSS/recipeCard.css">
 </head>
 
 <body>
@@ -35,7 +36,7 @@
 
                   <a href="Logout.php">Surt de la sessió</a>
                </div>
-               <h3 id="perfil_section_name">Nom</h3>
+               <h3 id="perfil_section_name" class="perfil_section_title">Nom</h3>
                <div class="perfil_input" id="perfil_nom">
                   <div class="perfil_input_title">
                      <label for="r_nom">Nom</label>
@@ -63,7 +64,7 @@
                         value="<?php echo $user->getSurname2() ?>">
                   </div>
                </div>
-               <h3 id="perfil_section_contact">Contacte</h3>
+               <h3 id="perfil_section_contact" class="perfil_section_title">Contacte</h3>
                <div class="perfil_input" id="perfil_email">
                   <div class="perfil_input_title">
                      <label for="r_email">E-mail</label>
@@ -91,7 +92,7 @@
                         value="<?php echo $user->getAddress() ?>">
                   </div>
                </div>
-               <h3 id="perfil-section-login">Informació de Login</h3>
+               <h3 id="perfil-section-login" class="perfil_section_title">Informació de Login</h3>
                <div class="perfil_input" id="perfil_username">
                   <div class="perfil_input_title">
                      <label for="r_username">Nom d'usuari</label>
@@ -110,7 +111,19 @@
                         value="<?php echo $user->getPassword() ?>">
                   </div>
                </div>
-               <h3 id="perfil_section_myRecipes">Les meves receptes</h3>
+               <div id="perfil_section_myRecipes">
+                  <h3 class="perfil_section_title">Les meves receptes</h3>
+                  <div id="perfil_myRecipes">
+                     <?php
+                     $recipesList = Recipe::readWithUserId($user->getId());
+                     foreach ($recipesList as $key => $recipe) {
+                        $recipe_id = $recipe['id'];
+                        require "Page_component/recipeCard.php";
+                     }
+                     ?>
+                  </div>
+
+               </div>
             </div>
          </div>
       </main>

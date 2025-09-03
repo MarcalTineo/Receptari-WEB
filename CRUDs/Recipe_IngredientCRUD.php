@@ -14,6 +14,7 @@ class Recipe_Ingredient
       if ($id != 0) {
          $read = Recipe_Ingredient::read($id);
          foreach ($read as $key => $value) {
+            var_dump($value);
             $this->id = $value['id'];
             $this->recipe_id = $value['recipe_id'];
             $this->ingredient_id = $value['ingredient_id'];
