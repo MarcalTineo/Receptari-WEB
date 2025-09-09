@@ -14,7 +14,7 @@ $recipe = new Recipe($recipe_id);
             </div>
             <div class="rCard_category">
                <div>
-                  <p><?php echo $recipe->getFirstCategoryName() ?></p>
+                  <?php echo $recipe->getFirstCategoryName() ?>
                </div>
             </div>
             <div class="rCard_description">

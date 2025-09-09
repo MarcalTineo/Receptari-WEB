@@ -129,7 +129,7 @@
                         </div>
                         <div class="nr_ingredient_row_name">
                            <select name="nr_ingredient" id="nr_ingredient">
-                              <option value="" selected disabled>Ingredient</option>
+                              <option value="" selected disabled>Selecciona</option>
                               <?php
                               //llegir la llista d'ingredients
                               $ingredients_result = Ingredient::readAll();
@@ -158,7 +158,7 @@
                         </div>
                         <div class="nr_ingredient_row_unit">
                            <select name="nr_ingredient_u" id="nr_ingredient_u">
-                              <option value="" disabled selected>Unitat</option>
+                              <option value="" disabled selected>Selecciona</option>
                               <?php
                               $units = Unit::readAll();
                               foreach ($units as $key => $value) {
@@ -176,7 +176,7 @@
                         </div>
                         <div class="nr_ingredient_row_name">
                            <select name="nr_ingredient0" id="nr_ingredient0">
-                              <option value="" selected disabled>Ingredient</option>
+                              <option value="" selected disabled>Selecciona</option>
                               <?php
                               //llegir la llista d'ingredients
                               $ingredients_result = Ingredient::readAll();
@@ -205,7 +205,7 @@
                         </div>
                         <div class="nr_ingredient_row_unit">
                            <select name="nr_ingredient_u0" id="nr_ingredient_u0">
-                              <option value="" disabled selected>Unitat</option>
+                              <option value="" disabled selected>Selecciona</option>
                               <?php
                               $units = Unit::readAll();
                               foreach ($units as $key => $value) {

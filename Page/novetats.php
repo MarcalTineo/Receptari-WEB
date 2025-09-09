@@ -27,7 +27,8 @@
       <main>
          <div id="content">
             <?php
-            $recipe_id = 1;
+
+            $recipe_id = 28;
             for ($i = 0; $i < 6; $i++) {
                require "Page_component/recipeCard.php";
             }

@@ -81,7 +81,6 @@ class SessionManager
          return false;
       }
 
-
       //if data stored in session matches database
       if (
          $logged_user->getUsername() == $_SESSION['username'] &&

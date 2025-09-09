@@ -16,10 +16,8 @@
    require "Utils/CheckSession.php";
    ?>
    <div id="page_wrapper">
-
       <?php
       require "Page_component/header.php";
-
       ?>
       <main>
          <div id="content">
